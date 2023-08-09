@@ -1,5 +1,6 @@
+/// Jason McMillan
 
-
+/// Photo object model
 class Photo {
   final int id;
   final String url;

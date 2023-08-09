@@ -33,9 +33,6 @@ dependencies:
   http: ^0.13.3  # Check for the latest version
   provider: ^5.0.0  # Replace with the latest version
 
-  #  flutter_cache_manager: ^3.2.0  # Add the flutter_cache_manager package here
-
-
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

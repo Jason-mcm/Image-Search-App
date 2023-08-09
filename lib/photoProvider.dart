@@ -1,6 +1,9 @@
+/// Jason McMillan
+
 import 'package:flutter/material.dart';
 import 'photo.dart';
 
+/// Provides access to liked photos on search screen and likes page
 class LikedPhotosProvider with ChangeNotifier {
   final Set<Photo> _likedPhotos = {};
   final Set<int> _photoIds = {};

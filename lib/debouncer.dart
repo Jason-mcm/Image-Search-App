@@ -1,5 +1,8 @@
+/// Jason McMillan
+
 import 'dart:async';
 
+/// Debouncer to prevent excessive api calls
 class Debouncer {
   final int milliSec;
   late Function action;

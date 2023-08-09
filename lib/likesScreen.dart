@@ -1,8 +1,11 @@
+/// Jason McMillan
+
 import 'package:flutter/material.dart';
 import 'package:image_search/photoProvider.dart';
 import 'package:provider/provider.dart';
 import 'photo.dart';
 
+/// Like screen widget
 class LikeScreen extends StatefulWidget {
   const LikeScreen({super.key});
 
@@ -33,6 +36,19 @@ class _LikeScreenState extends State<LikeScreen> {
                         child: Image.network(
                           photo.url,
                           fit: BoxFit.cover,
+                          loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+                            if (loadingProgress == null) {
+                              return child;
+                            } else {
+                              return Center(
+                                child: CircularProgressIndicator(
+                                  value: loadingProgress.expectedTotalBytes != null
+                                      ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
+                                      : null,
+                                ),
+                              );
+                            }
+                          },
                         )
                     ),
                   ],

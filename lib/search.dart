@@ -1,15 +1,16 @@
+/// Jason McMillan
+
 import 'photo.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-
 class Search {
 
-  static const apiKey = "oN4trq6sXKd5qnQnZf7RsfD77kG7NYezL1kpD7yNLpkslaV237YKTOz4";
+  static const apiKey = "oN4trq6sXKd5qnQnZf7RsfD77kG7NYezL1kpD7yNLpkslaV237YKTOz4"; // This should typically be removed before committing but keeping for easy testing
   String uri = "https://api.pexels.com/v1/search?query=";
 
+  /// API call using pexels to get list of photos based on input query
   Future<List<Photo>> search(String query) async {
-    print(query);
     final response = await http.get(
       Uri.parse(uri + query),
       headers: {
@@ -26,5 +27,4 @@ class Search {
       throw Exception('Error: failed to load photos');
     }
   }
-
 }

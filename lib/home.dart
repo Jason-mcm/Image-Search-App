@@ -34,6 +34,9 @@ class _HomePageState extends State<HomePage> {
         ),
         body: _screens[_currentIndex],
         bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Theme.of(context).primaryColor,
+            selectedItemColor: Colors.grey,
+            unselectedItemColor: Colors.white,
             currentIndex: _currentIndex,
             onTap: (index) {
               setState(() {
