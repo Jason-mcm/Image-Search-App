@@ -31,7 +31,9 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^0.13.3  # Check for the latest version
-#  flutter_cache_manager: ^3.2.0  # Add the flutter_cache_manager package here
+  provider: ^5.0.0  # Replace with the latest version
+
+  #  flutter_cache_manager: ^3.2.0  # Add the flutter_cache_manager package here
 
 
 

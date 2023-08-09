@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:image_search/photoProvider.dart';
 import 'search.dart';
 import 'photo.dart';
 import 'debouncer.dart';
+import 'home.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
+
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -12,7 +16,6 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen>{
-
   final TextEditingController _searchController = TextEditingController();
   final Search _search = Search();
   List<Photo> _photos = [];
@@ -40,23 +43,24 @@ class _SearchScreenState extends State<SearchScreen>{
     });
   }
 
-  void toggleLike(int photoId) {
-    setState(() {
-      if (_liked.contains(photoId)) {
-        _liked.remove(photoId);
-      } else {
-        _liked.add(photoId);
-      }
-    });
-  }
+  // void toggleLike(int photoId) {
+  //   setState(() {
+  //     if (_liked.contains(photoId)) {
+  //       _liked.remove(photoId);
+  //     } else {
+  //       _liked.add(photoId);
+  //     }
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
+    final likedPhotosProvider = Provider.of<LikedPhotosProvider>(context);
+    Set<Photo> likedPhotos = likedPhotosProvider.likedPhotos;
+    Set<int> photoIds = likedPhotosProvider.photoIds;
+
+
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('Search Images'),
-      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -83,7 +87,7 @@ class _SearchScreenState extends State<SearchScreen>{
                 itemBuilder: (context, index) {
                   final photo = _photos[index];
                   IconData icon;
-                  if (_liked.contains(photo.id)) {
+                  if (photoIds.contains(photo.id)) {
                     icon = Icons.favorite;
                   } else {
                     icon = Icons.favorite_border;
@@ -107,7 +111,7 @@ class _SearchScreenState extends State<SearchScreen>{
                             tooltip: 'Like',
                             iconSize: 30,
                             onPressed: () {
-                              toggleLike(photo.id);
+                              likedPhotosProvider.toggleLike(photo);
                             },
                           )
                         ],

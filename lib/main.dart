@@ -1,8 +1,17 @@
+/// Jason McMillan
+
 import 'package:flutter/material.dart';
+import 'package:image_search/photoProvider.dart';
+import 'package:provider/provider.dart';
 import 'home.dart';
 
+/// Main driver function
 void main() {
-  runApp(const MyApp());
+  runApp(
+      ChangeNotifierProvider(create: (context) => LikedPhotosProvider(),
+      child: const MyApp(),
+      )
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -13,10 +22,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Image Search App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlue),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue.shade500),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'SearchIT'),
+      home: const HomePage(title: 'Image Search App'),
     );
   }
 }
