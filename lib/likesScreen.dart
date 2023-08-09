@@ -1,8 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:image_search/photoProvider.dart';
 import 'package:provider/provider.dart';
-
+import 'photo.dart';
 
 class LikeScreen extends StatefulWidget {
   const LikeScreen({super.key});
@@ -15,10 +14,33 @@ class _LikeScreenState extends State<LikeScreen> {
   @override
   Widget build(BuildContext context) {
     final likedPhotoProvider = Provider.of<LikedPhotosProvider>(context);
-    print(likedPhotoProvider.likedPhotos.length);
+    List<Photo> likedPhotos = likedPhotoProvider.likedPhotos.toList();
+
     return Scaffold(
       body: Center(
-        child: Text("HERE hahahahaha"),
+        child: ListView.builder(
+          itemCount: likedPhotos.length,
+          itemBuilder: (context, index) {
+            final photo = likedPhotos[index];
+            return Container(
+              padding: const EdgeInsets.all(10),
+              child: Center(
+                child: Column(
+                  children: [
+                    SizedBox(
+                        height: 300,
+                        width: 375,
+                        child: Image.network(
+                          photo.url,
+                          fit: BoxFit.cover,
+                        )
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
