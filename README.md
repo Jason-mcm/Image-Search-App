@@ -14,17 +14,17 @@ Home page of the application:
 
 Use the search bar to enter a query: 
 
-![Simulator Screenshot - iPhone 14 Pro Max - 2023-08-09 at 11 46 38](https://github.com/Jason-mcm/Image-Search-App/assets/86077146/b229a16a-6510-4979-8b45-a8baba46b7f3)
+![Simulator Screenshot - iPhone 14 Pro Max - 2023-08-09 at 13 00 08](https://github.com/Jason-mcm/Image-Search-App/assets/86077146/9d896ac3-f597-4ea8-88e0-aa898c7a041f)
 
 
 Click the like button to add a photo to your favorites:
 
-![Simulator Screenshot - iPhone 14 Pro Max - 2023-08-09 at 11 47 50](https://github.com/Jason-mcm/Image-Search-App/assets/86077146/f8d4f6a9-863f-4140-9b6d-c4c88f15a00b)
+![Simulator Screenshot - iPhone 14 Pro Max - 2023-08-09 at 13 01 04](https://github.com/Jason-mcm/Image-Search-App/assets/86077146/a40a7b3f-ad84-4e6c-b001-82b5ab22aaf0)
 
 
 Navigate to the favorites page via the bottom navigation bar:
 
-![Simulator Screenshot - iPhone 14 Pro Max - 2023-08-09 at 11 51 17](https://github.com/Jason-mcm/Image-Search-App/assets/86077146/81045a90-5dd3-4af8-bcfd-da92558a8756)
+![Simulator Screenshot - iPhone 14 Pro Max - 2023-08-09 at 13 02 07](https://github.com/Jason-mcm/Image-Search-App/assets/86077146/4b585324-5ea5-4d0d-a869-8bc2716c632d)
 
 
 For help getting started with Flutter development, view the
