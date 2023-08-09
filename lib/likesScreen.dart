@@ -18,6 +18,7 @@ class _LikeScreenState extends State<LikeScreen> {
   Widget build(BuildContext context) {
     final likedPhotoProvider = Provider.of<LikedPhotosProvider>(context);
     List<Photo> likedPhotos = likedPhotoProvider.likedPhotos.toList();
+    likedPhotos = likedPhotos.reversed.toList();
 
     return Scaffold(
       body: Center(
