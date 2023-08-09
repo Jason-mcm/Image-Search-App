@@ -70,7 +70,13 @@ class _SearchScreenState extends State<SearchScreen> {
                       ? const Center(
                           child: Text('No Results Found'),
                         )
-                      : ListView.builder(
+                      : GridView.builder(
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 10.0,
+                            mainAxisSpacing: 10.0,
+                          ),
                           itemCount: _photos.length,
                           itemBuilder: (context, index) {
                             final photo = _photos[index];
@@ -81,24 +87,33 @@ class _SearchScreenState extends State<SearchScreen> {
                               icon = Icons.favorite_border;
                             }
                             return Container(
-                              padding: const EdgeInsets.all(10),
+                              padding: const EdgeInsets.all(5),
                               child: Center(
                                 child: Column(
                                   children: [
                                     SizedBox(
-                                        height: 300,
-                                        width: 375,
+                                        height: 145,
+                                        width: 200,
                                         child: Image.network(
                                           photo.url,
                                           fit: BoxFit.cover,
-                                          loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+                                          loadingBuilder: (BuildContext context,
+                                              Widget child,
+                                              ImageChunkEvent?
+                                                  loadingProgress) {
                                             if (loadingProgress == null) {
                                               return child;
                                             } else {
                                               return Center(
-                                                child: CircularProgressIndicator(
-                                                  value: loadingProgress.expectedTotalBytes != null
-                                                      ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
+                                                child:
+                                                    CircularProgressIndicator(
+                                                  value: loadingProgress
+                                                              .expectedTotalBytes !=
+                                                          null
+                                                      ? loadingProgress
+                                                              .cumulativeBytesLoaded /
+                                                          loadingProgress
+                                                              .expectedTotalBytes!
                                                       : null,
                                                 ),
                                               );
@@ -107,10 +122,10 @@ class _SearchScreenState extends State<SearchScreen> {
                                         )),
                                     IconButton(
                                       padding: const EdgeInsets.fromLTRB(
-                                          0, 10, 0, 0),
+                                          0, 5, 0, 0),
                                       icon: Icon(icon),
                                       tooltip: 'Like',
-                                      iconSize: 30,
+                                      iconSize: 25,
                                       onPressed: () {
                                         likedPhotosProvider.toggleLike(photo);
                                       },

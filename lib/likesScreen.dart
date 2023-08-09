@@ -21,18 +21,23 @@ class _LikeScreenState extends State<LikeScreen> {
 
     return Scaffold(
       body: Center(
-        child: ListView.builder(
+        child: GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 10.0,
+            mainAxisSpacing: 10.0,
+          ),
           itemCount: likedPhotos.length,
           itemBuilder: (context, index) {
             final photo = likedPhotos[index];
             return Container(
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
               child: Center(
                 child: Column(
                   children: [
                     SizedBox(
-                        height: 300,
-                        width: 375,
+                        height: 175,
+                        width: 200,
                         child: Image.network(
                           photo.url,
                           fit: BoxFit.cover,
