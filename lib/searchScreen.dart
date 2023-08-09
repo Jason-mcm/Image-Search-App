@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'search.dart';
 import 'photo.dart';
+import 'debouncer.dart';
 import 'package:flutter/cupertino.dart';
 
 class SearchScreen extends StatefulWidget {
@@ -17,15 +18,25 @@ class _SearchScreenState extends State<SearchScreen>{
   List<Photo> _photos = [];
   bool _isLoading = false;
   final Set<int> _liked = {};
+  final _debouncer = Debouncer(milliSec: 500);
 
   void searchQuery(String query) async {
-    setState(() {
-      _isLoading = true;
-    });
-    final result = await _search.search(query);
-    setState(() {
-      _photos = result;
-      _isLoading = false;
+    if (query.isEmpty) {
+      setState(() {
+        _photos.clear();
+      });
+      return;
+    }
+
+    _debouncer.debounce(() async {
+      setState(() {
+        _isLoading = true;
+      });
+      final result = await _search.search(query);
+      setState(() {
+        _photos = result;
+        _isLoading = false;
+      });
     });
   }
 
